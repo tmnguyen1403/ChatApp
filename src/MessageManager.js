@@ -26,8 +26,14 @@ class MessageManager extends Component {
 		const {users} = this.props;
 		return (
 			<React.Fragment>
-				<ChatWindow username={users[0].username} messages={this.state.messages} handleMessage={this.sendMessage} />
-				<ChatWindow username={users[1].username} messages={this.state.messages} handleMessage={this.sendMessage}/>
+				{users.map(user => (
+						<ChatWindow
+							key={user.username}
+							username={user.username}
+							messages={this.state.messages}
+							handleMessage={this.sendMessage}
+						/>
+				))}
 			</React.Fragment>
 		);
 	}
